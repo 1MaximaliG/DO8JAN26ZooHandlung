@@ -1,0 +1,19 @@
+﻿@model List<EingabeViewModel>
+<div>
+    <form asp-action="TierZuEuro" method="post">
+        <ol>
+            @{
+                List<Tier> repo = Repository.Tiere.ToList();
+                @for (int i = 0; i < repo.Count(); i++)
+                {
+                    <li>
+                        <label>@repo[i].Name</label>
+                        <input type="hidden" asp-for="@Model[i].TierID" />
+                        <input asp-for="@Model[i].Anzahl" />
+                    </li>
+                }
+            }
+        </ol>
+        <button type="submit">Umrechnen</button>
+    </form>
+</div>
