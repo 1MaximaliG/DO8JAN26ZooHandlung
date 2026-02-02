@@ -31,7 +31,7 @@ namespace ZooHandlung.Models
                         });
                         geld = geld % t.Wechselkurs;
                     }
-                    else
+                    else//wenn ein Wechselkurs = 0 ist
                     {
                         erg.Add(new EingabeViewModel
                         {
@@ -44,7 +44,7 @@ namespace ZooHandlung.Models
             erg.Add(new EingabeViewModel
             {
                 TierID = 0, //hier wird die ID direkt auf 0 gesetzt
-                Anzahl = 1
+                Anzahl = (int)(geld * 100)
             }
             );
             return erg;

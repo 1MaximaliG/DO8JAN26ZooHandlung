@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<EingabeViewModel>
+<div>
+    <ol>
+        @{
+            List<Tier> repo = Repository.Tiere.ToList();
+        }
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            if (Model[i].TierID != 0)
+            {
+                <li>
+                    @Model[i].Anzahl
+                    @repo.First(t => t.ID == Model[i].TierID).Name
+                    @repo[Model[i].TierID - 1].Name<!--variante von Thomas-->
+                </li>
+            }
+            else
+            {
+                <li>
+                    Restbetrag: 
+                    
+                     @Model[i].Anzahl 
+                     Cents
+                </li>
+            }
+        }
+
+    </ol>
+</div>

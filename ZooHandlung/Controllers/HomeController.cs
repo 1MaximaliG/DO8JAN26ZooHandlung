@@ -34,8 +34,7 @@ namespace ZooHandlung.Controllers
         [HttpPost]
         public IActionResult EuroZuTier(decimal geld)
         {
-            //View wird inhalte vom Dictionary zeigen
-            return View(Umrechner.EuroZuTier(geld));
+                return View("TierErgebnis",Umrechner.EuroZuTier(geld) );
         }
         [HttpPost]
         public IActionResult TierZuEuro(List<EingabeViewModel> tierListe)
