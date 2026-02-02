@@ -41,11 +41,13 @@ namespace ZooHandlung.Controllers
         public IActionResult TierZuEuro(List<EingabeViewModel> tierListe)
         {
             foreach(var item in tierListe)
-            {
-                Console.WriteLine(item.Tier.Name);
+            {//{Repository.Tiere.FirstOrDefault(t => t.ID == item.TierID).Name}
+                //Console.WriteLine($"{item.TierID} = {item.Anzahl} von {Repository.Tiere.FirstOrDefault(t => t.ID == item.TierID).Name}");
+                //hier kommen die IDs richtig an! :D
             }
             //View bekommt nur den Geldbetrag
-            return View(Umrechner.TierZuEuro(tierListe));
+            //FEHLT NOCH DIE NEUE VIEW
+            return View("ErgebnisView",Umrechner.TierZuEuro(tierListe));
         }
     }
 }

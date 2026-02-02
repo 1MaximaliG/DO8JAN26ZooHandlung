@@ -4,14 +4,14 @@ namespace ZooHandlung.Models
 {
     public static class Umrechner
     {
-        public static decimal TierZuEuro(List<EingabeViewModel> tierListe)
+        public static decimal TierZuEuro(List<EingabeViewModel> eingListe)
         {
             decimal erg = 0;
-            foreach (var item in tierListe)
+            for(int i = 0; i < eingListe.Count;i++)
             {
-                if(item != null)
-                erg += item.Anzahl * item.Tier.Wechselkurs;
-            }
+                erg += eingListe[i].Anzahl * Repository.Tiere.First(t => t.ID == eingListe[i].TierID).Wechselkurs;
+                Console.WriteLine(erg);
+            }//Läd jetzt den Wechselkurs direkt aus dem Repository passend zur TierID
             return erg;
         }
         public static List<EingabeViewModel> EuroZuTier(decimal geld)
@@ -26,7 +26,7 @@ namespace ZooHandlung.Models
                     {
                         erg.Add(new EingabeViewModel
                         {
-                            Tier = t,
+                            TierID = t.ID,//hier muss nur tier durch TierID vor
                             Anzahl = (int)(geld / t.Wechselkurs)
                         });
                         geld = geld % t.Wechselkurs;
@@ -35,7 +35,7 @@ namespace ZooHandlung.Models
                     {
                         erg.Add(new EingabeViewModel
                         {
-                            Tier = t,
+                            TierID = t.ID,
                             Anzahl = 0
                         });
                     }
@@ -43,7 +43,7 @@ namespace ZooHandlung.Models
             }
             erg.Add(new EingabeViewModel
             {
-                Tier = new Tier { ID = 0, Name = "Restbetrag", Wechselkurs = geld },
+                TierID = 0, //hier wird die ID direkt auf 0 gesetzt
                 Anzahl = 1
             }
             );
