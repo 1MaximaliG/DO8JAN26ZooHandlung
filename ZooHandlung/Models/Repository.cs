@@ -39,5 +39,10 @@
             int index =_tiere.IndexOf(_tiere.First(t => t.ID == tier.ID));
             _tiere[index] = tier;
         }
+        public static void Delete(Tier EINtier)
+        {
+            Tier tier = Repository.Tiere.First(t => t.ID == EINtier.ID);
+            _tiere.Remove(tier);
+        }
     }
 }

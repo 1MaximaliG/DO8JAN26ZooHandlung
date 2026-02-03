@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Delete Tier";
+}
+@model Tier
+<div>
+    <div>Möchten sie @Model.Name wirklich löschen</div>
+    <form asp-action="Delete" method="post">
+        <input asp-for="ID" value="@Model.ID" type="hidden" />
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" value="@Model.Name" readonly/>
+        </div>
+        <div>
+            <label asp-for="Wechselkurs"></label>
+            <input asp-for="Wechselkurs" readonly  value="@Model.Wechselkurs"/>
+        </div>
+        <button type="submit" class="btn btn-danger">Löschen</button>
+    </form>
+        <a asp-action="Index" class="btn btn-danger mt-2">Zurück</a>
+</div>

@@ -32,5 +32,16 @@ namespace ZooHandlung.Controllers
             Repository.UpdateTier(tier);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(Repository.Tiere.First(tier => tier.ID == id));
+        }
+        [HttpPost]
+        public IActionResult Delete(Tier tier)
+        {
+            Repository.Delete(tier);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

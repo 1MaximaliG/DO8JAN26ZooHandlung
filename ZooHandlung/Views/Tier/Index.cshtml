@@ -24,7 +24,10 @@
                         @item.Name
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-secondary">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Löschen</a>
                     </td>
                 </tr>
             }
