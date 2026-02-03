@@ -32,9 +32,11 @@ namespace ZooHandlung.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult EuroZuTier(decimal geld)
+        public IActionResult EuroZuTier(string geld)
         {
-                return View("TierErgebnis",Umrechner.EuroZuTier(geld) );
+            geld = geld.Replace('.', ',');
+            Console.WriteLine(geld);
+            return View("TierErgebnis",Umrechner.EuroZuTier(Convert.ToDecimal(geld)) );
         }
         [HttpPost]
         public IActionResult TierZuEuro(List<EingabeViewModel> tierListe)

@@ -8,6 +8,9 @@
 
 <form asp-action="EuroZuTier" method="post">
     <p>Für wieviel geld wollen sie Tiere kaufen?</p>
-    <input name="geld" value="@Model" type="number" step="0.01" />
+    <input name="geld" 
+        value="@Model"
+        type="number" 
+        step="0.01" />
     <button type="submit">berechnen</button>
 </form>

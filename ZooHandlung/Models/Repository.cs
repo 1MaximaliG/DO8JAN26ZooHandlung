@@ -34,5 +34,10 @@
             tier.ID = _tiere.Last().ID + 1;
             _tiere.Add(tier);
         }
+        public static void UpdateTier(Tier tier)
+        {
+            int index =_tiere.IndexOf(_tiere.First(t => t.ID == tier.ID));
+            _tiere[index] = tier;
+        }
     }
 }

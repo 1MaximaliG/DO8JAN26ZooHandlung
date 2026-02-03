@@ -18,7 +18,19 @@ namespace ZooHandlung.Controllers
         [HttpPost]
         public IActionResult Create(Tier tier)
         {
-            return View();
+            Repository.AddTier(tier);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(Repository.Tiere.First(tier => tier.ID == id));
+        }
+        [HttpPost]
+        public IActionResult Edit(Tier tier)
+        {
+            Repository.UpdateTier(tier);
+            return RedirectToAction("Index");
         }
     }
 }
